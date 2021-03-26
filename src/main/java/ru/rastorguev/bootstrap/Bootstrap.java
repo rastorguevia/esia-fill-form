@@ -191,6 +191,13 @@ public class Bootstrap {
         //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'form-group')]")));
 
 
+        //TODO сделать очистку полей перед записью
+        //TODO выбор галочек
+        //TODO выбор муниципалитета?
+        //TODO сделать выбор выпадающих списков
+        //TODO сделать проверку на то что если поле в файле не заполнено - не заполнять форму
+
+
         surnameField.sendKeys(utf8Charset(personInfo.getSurname()));
         nameField.sendKeys(utf8Charset(personInfo.getName()));
         patronymicField.sendKeys(utf8Charset(personInfo.getPatronymic()));
