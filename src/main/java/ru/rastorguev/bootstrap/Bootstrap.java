@@ -5,13 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.json.JsonOutput;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import ru.rastorguev.info.BrowserInfo;
+import ru.rastorguev.info.ChildInfo;
 import ru.rastorguev.info.PersonInfo;
-
-import java.nio.charset.StandardCharsets;
 
 import static ru.rastorguev.constant.Constant.*;
 import static ru.rastorguev.util.Utils.*;
@@ -20,6 +18,7 @@ public class Bootstrap {
 
     private WebDriver webDriver;
     private PersonInfo personInfo;
+    private ChildInfo childInfo;
     private BrowserInfo browserInfo;
 
     @FindBy(xpath = "//*[contains(@id, 'LastName')]")
@@ -95,6 +94,85 @@ public class Bootstrap {
     private WebElement apartmentStayField;
 
 
+    @FindBy(xpath = "//*[contains(@id, 'email')]")
+    private WebElement email;
+
+    @FindBy(xpath = "//*[contains(@id, 'phone')]")
+    private WebElement phone;
+
+
+
+
+    @FindBy(xpath = "//*[contains(@id, 'childLastName')]")
+    private WebElement childSurnameField;
+
+    @FindBy(xpath = "//*[contains(@id, 'childFirstName')]")
+    private WebElement childNameField;
+
+    @FindBy(xpath = "//*[contains(@id, 'childMiddleName')]")
+    private WebElement childPatronymicField;
+
+    @FindBy(xpath = "//*[contains(@id, 'ChildBirthdate')]")
+    private WebElement childBirthdateField;
+
+    @FindBy(xpath = "//*[contains(@id, 'childBirthPlace')]")
+    private WebElement childBirthPlaceField;
+
+
+    @FindBy(xpath = "//*[contains(@id, 'ChildDocSeries')]")
+    private WebElement childDocSeriesField;
+
+    @FindBy(xpath = "//*[contains(@id, 'ChildDocNumber')]")
+    private WebElement childDocNumberField;
+
+    @FindBy(xpath = "//*[contains(@id, 'ChildDocNumberIssued')]")
+    private WebElement childDocIssuedByField;
+
+    @FindBy(xpath = "//*[contains(@id, 'ChildDocDate')]")
+    private WebElement childDocIssuedDateField;
+
+    @FindBy(xpath = "//*[contains(@id, 'ChildActEntry')]")
+    private WebElement childActRecordNumberField;
+
+
+    @FindBy(xpath = "//*[contains(@id, 'regRegion')]")
+    private WebElement childRegionField;
+
+    @FindBy(xpath = "//*[contains(@id, 'regDistrict')]")
+    private WebElement childDistrictField;
+
+    @FindBy(xpath = "//*[contains(@id, 'regCity')]")
+    private WebElement childCityField;
+
+    @FindBy(xpath = "//*[contains(@id, 'regStreet')]")
+    private WebElement childStreetField;
+
+    @FindBy(xpath = "//*[contains(@id, 'regHouse')]")
+    private WebElement childHouseField;
+
+    @FindBy(xpath = "//*[contains(@id, 'regFlat')]")
+    private WebElement childApartmentField;
+
+
+
+    @FindBy(xpath = "//*[contains(@id, 'resiRegion')]")
+    private WebElement childRegionStayField;
+
+    @FindBy(xpath = "//*[contains(@id, 'resiDistrict')]")
+    private WebElement childDistrictStayField;
+
+    @FindBy(xpath = "//*[contains(@id, 'resiCity')]")
+    private WebElement childCityStayField;
+
+    @FindBy(xpath = "//*[contains(@id, 'resiStreet')]")
+    private WebElement childStreetStayField;
+
+    @FindBy(xpath = "//*[contains(@id, 'resiHouse')]")
+    private WebElement childHouseStayField;
+
+    @FindBy(xpath = "//*[contains(@id, 'resiFlat')]")
+    private WebElement childApartmentStayField;
+
 
     public Bootstrap() throws Exception {
         init();
@@ -142,8 +220,34 @@ public class Bootstrap {
         houseStayField.sendKeys(utf8Charset(personInfo.getHouseStay()));
         apartmentStayField.sendKeys(utf8Charset(personInfo.getApartmentStay()));
 
+        childSurnameField.sendKeys(utf8Charset(childInfo.getChildSurname()));
+        childNameField.sendKeys(utf8Charset(childInfo.getChildName()));
+        childPatronymicField.sendKeys(utf8Charset(childInfo.getChildPatronymic()));
+        childBirthdateField.sendKeys(utf8Charset(childInfo.getChildBirthdate()));
+        childBirthPlaceField.sendKeys(utf8Charset(childInfo.getChildBirthPlace()));
 
+        childDocSeriesField.sendKeys(utf8Charset(childInfo.getChildDocSeries()));
+        childDocNumberField.sendKeys(utf8Charset(childInfo.getChildDocNumber()));
+        childDocIssuedByField.sendKeys(utf8Charset(childInfo.getChildDocIssuedBy()));
+        childDocIssuedDateField.sendKeys(utf8Charset(childInfo.getChildDocIssuedDate()));
+        childActRecordNumberField.sendKeys(utf8Charset(childInfo.getChildActRecordNumber()));
 
+        childRegionField.sendKeys(utf8Charset(childInfo.getChildRegion()));
+        childDistrictField.sendKeys(utf8Charset(childInfo.getChildDistrict()));
+        childCityField.sendKeys(utf8Charset(childInfo.getChildCity()));
+        childStreetField.sendKeys(utf8Charset(childInfo.getChildStreet()));
+        childHouseField.sendKeys(utf8Charset(childInfo.getChildHouse()));
+        childApartmentField.sendKeys(utf8Charset(childInfo.getChildApartment()));
+
+        childRegionStayField.sendKeys(utf8Charset(childInfo.getChildRegionStay()));
+        childDistrictStayField.sendKeys(utf8Charset(childInfo.getChildDistrictStay()));
+        childCityStayField.sendKeys(utf8Charset(childInfo.getChildCityStay()));
+        childStreetStayField.sendKeys(utf8Charset(childInfo.getChildStreetStay()));
+        childHouseStayField.sendKeys(utf8Charset(childInfo.getChildHouseStay()));
+        childApartmentStayField.sendKeys(utf8Charset(childInfo.getChildApartmentStay()));
+
+        email.sendKeys(utf8Charset(personInfo.getEmail()));
+        phone.sendKeys(utf8Charset(personInfo.getPhone()));
 
     }
 
@@ -153,6 +257,9 @@ public class Bootstrap {
 
         personInfo = new PersonInfo();
         ConfigParser.parse(personInfo, "info.ini");
+
+        childInfo = new ChildInfo();
+        ConfigParser.parse(childInfo, "info.ini");
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");

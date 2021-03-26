@@ -63,4 +63,10 @@ public class PersonInfo {
     @Cfg("apartmentStay")
     private String apartmentStay;
 
+    //КОНТАКТНАЯ ИНФОРМАЦИЯ
+    @Cfg("phone")
+    private String phone;
+    @Cfg("email")
+    private String email;
+
 }
