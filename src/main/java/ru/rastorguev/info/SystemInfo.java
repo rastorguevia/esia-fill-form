@@ -6,11 +6,13 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class BrowserInfo {
+public class SystemInfo {
 
     @Cfg("chromeDriverPath")
     private String chromeDriverPath;
     @Cfg("website")
     private String website;
+    @Cfg("threadCount")
+    private int threadCount;
 
 }
