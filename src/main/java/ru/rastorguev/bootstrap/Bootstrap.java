@@ -3,16 +3,14 @@ package ru.rastorguev.bootstrap;
 import jfork.nproperty.ConfigParser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.rastorguev.info.SystemInfo;
 import ru.rastorguev.info.ChildInfo;
 import ru.rastorguev.info.PersonInfo;
+import ru.rastorguev.info.SystemInfo;
 import ru.rastorguev.pages.FormPage;
 import ru.rastorguev.thread.ChildAddressThread;
 import ru.rastorguev.thread.ChildDataThread;
@@ -23,7 +21,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import static ru.rastorguev.constant.Constant.*;
-import static ru.rastorguev.util.Utils.clearAndFill;
 
 public class Bootstrap {
 
@@ -64,13 +61,8 @@ public class Bootstrap {
         WebDriverWait wait = new WebDriverWait(webDriver, 60);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'container wrapper ccc ng-scope')]")));
 
-
-        //TODO выбор галочек
         //TODO выбор муниципалитета?
         //TODO сделать выбор выпадающих списков
-        //TODO сделать проверку на то что если поле в файле не заполнено - не заполнять форму
-
-
 
 
 //        WebElement selectElement =
