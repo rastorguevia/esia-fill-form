@@ -11,6 +11,8 @@ import ru.rastorguev.info.BrowserInfo;
 import ru.rastorguev.info.ChildInfo;
 import ru.rastorguev.info.PersonInfo;
 
+import java.util.Date;
+
 import static ru.rastorguev.constant.Constant.*;
 import static ru.rastorguev.util.Utils.*;
 
@@ -197,6 +199,22 @@ public class Bootstrap {
         //TODO сделать выбор выпадающих списков
         //TODO сделать проверку на то что если поле в файле не заполнено - не заполнять форму
 
+        long start = System.currentTimeMillis();
+
+
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+
 
         surnameField.sendKeys(utf8Charset(personInfo.getSurname()));
         nameField.sendKeys(utf8Charset(personInfo.getName()));
@@ -227,6 +245,7 @@ public class Bootstrap {
         houseStayField.sendKeys(utf8Charset(personInfo.getHouseStay()));
         apartmentStayField.sendKeys(utf8Charset(personInfo.getApartmentStay()));
 
+
         childSurnameField.sendKeys(utf8Charset(childInfo.getChildSurname()));
         childNameField.sendKeys(utf8Charset(childInfo.getChildName()));
         childPatronymicField.sendKeys(utf8Charset(childInfo.getChildPatronymic()));
@@ -256,6 +275,9 @@ public class Bootstrap {
         email.sendKeys(utf8Charset(personInfo.getEmail()));
         phone.sendKeys(utf8Charset(personInfo.getPhone()));
 
+
+
+        System.out.println(((double) System.currentTimeMillis() - start) / 1000 + " sec");
     }
 
     private void init() throws Exception {
