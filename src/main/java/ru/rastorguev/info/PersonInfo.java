@@ -8,6 +8,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PersonInfo {
 
+    @Cfg("agreement")
+    private String agreement;
+    @Cfg("confirmOrder")
+    private String confirmOrder;
+
     //ЗАЯВИТЕЛЬ
     @Cfg("surname")
     private String surname;

@@ -1,10 +1,15 @@
 package ru.rastorguev.bootstrap;
 
 import jfork.nproperty.ConfigParser;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.rastorguev.info.SystemInfo;
 import ru.rastorguev.info.ChildInfo;
 import ru.rastorguev.info.PersonInfo;
@@ -18,6 +23,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import static ru.rastorguev.constant.Constant.*;
+import static ru.rastorguev.util.Utils.clearAndFill;
 
 public class Bootstrap {
 
@@ -40,15 +46,7 @@ public class Bootstrap {
         formPage = new FormPage();
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("start-maximized");
-
-//        options.addArguments("--no-sandbox");
-//        options.addArguments("--headless");
-//        options.addArguments("--no-proxy-server");
-//        options.addArguments("--disable-gpu");
-//        options.addArguments("disable-infobars");
-//        options.addArguments("--disable-extensions");
-//        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments(START_MAXIMIZED);
 
         System.setProperty(DRIVER_PATH_KEY, systemInfo.getChromeDriverPath());
         webDriver = new ChromeDriver(options);
@@ -63,18 +61,26 @@ public class Bootstrap {
 
     private void processPage() throws Exception {
 
-       // webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-        //WebDriverWait wait = new WebDriverWait(webDriver, 10);
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'form-group')]")));
+        WebDriverWait wait = new WebDriverWait(webDriver, 60);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'container wrapper ccc ng-scope')]")));
 
 
-        //TODO сделать очистку полей перед записью
         //TODO выбор галочек
         //TODO выбор муниципалитета?
         //TODO сделать выбор выпадающих списков
         //TODO сделать проверку на то что если поле в файле не заполнено - не заполнять форму
 
+
+
+
+//        WebElement selectElement =
+//                webDriver.findElement(By.id("ApplicantDocumentType"));
+//        Select select = new Select(selectElement);
+//        try {
+//            select.selectByVisibleText("PASSPORT");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
         ExecutorService es = Executors.newFixedThreadPool(systemInfo.getThreadCount());
         es.execute(new PersonDataThread(formPage, personInfo));

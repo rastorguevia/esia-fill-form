@@ -8,6 +8,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ChildInfo {
 
+    @Cfg("childAddressMatch")
+    private String childAddressMatch;
+
+    @Cfg("childSpecialConditions")
+    private String childSpecialConditions;
+    @Cfg("childAdaptedEducational")
+    private String childAdaptedEducational;
+    @Cfg("childPreferentialRightToStudy")
+    private String childPreferentialRightToStudy;
+
     //ДАННЫЕ РЕБЕНКА
     @Cfg("childSurname")
     private String childSurname;

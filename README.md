@@ -3,7 +3,6 @@
 + JRE
 + Java 8
 + Maven 3.6.3
-+ Chocolatey  
 + Chrome + ChromeDriver
 ## Developer
 Ivan Rastorguev

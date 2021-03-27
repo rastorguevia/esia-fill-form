@@ -3,6 +3,7 @@ package ru.rastorguev.thread;
 import ru.rastorguev.info.ChildInfo;
 import ru.rastorguev.pages.FormPage;
 
+import static ru.rastorguev.util.Utils.clearAndFill;
 import static ru.rastorguev.util.Utils.utf8Charset;
 
 public class ChildAddressThread implements Runnable{
@@ -20,19 +21,21 @@ public class ChildAddressThread implements Runnable{
     public void run() {
         try {
 
-            formPage.childRegionField.sendKeys(utf8Charset(childInfo.getChildRegion()));
-            formPage.childDistrictField.sendKeys(utf8Charset(childInfo.getChildDistrict()));
-            formPage.childCityField.sendKeys(utf8Charset(childInfo.getChildCity()));
-            formPage.childStreetField.sendKeys(utf8Charset(childInfo.getChildStreet()));
-            formPage.childHouseField.sendKeys(utf8Charset(childInfo.getChildHouse()));
-            formPage.childApartmentField.sendKeys(utf8Charset(childInfo.getChildApartment()));
+            if ("1".equals(childInfo.getChildAddressMatch())) formPage.childAddressMatch.click();
 
-            formPage.childRegionStayField.sendKeys(utf8Charset(childInfo.getChildRegionStay()));
-            formPage.childDistrictStayField.sendKeys(utf8Charset(childInfo.getChildDistrictStay()));
-            formPage.childCityStayField.sendKeys(utf8Charset(childInfo.getChildCityStay()));
-            formPage.childStreetStayField.sendKeys(utf8Charset(childInfo.getChildStreetStay()));
-            formPage.childHouseStayField.sendKeys(utf8Charset(childInfo.getChildHouseStay()));
-            formPage.childApartmentStayField.sendKeys(utf8Charset(childInfo.getChildApartmentStay()));
+            clearAndFill(formPage.childRegionField, childInfo.getChildRegion());
+            clearAndFill(formPage.childDistrictField, childInfo.getChildDistrict());
+            clearAndFill(formPage.childCityField, childInfo.getChildCity());
+            clearAndFill(formPage.childStreetField, childInfo.getChildStreet());
+            clearAndFill(formPage.childHouseField, childInfo.getChildHouse());
+            clearAndFill(formPage.childApartmentField, childInfo.getChildApartment());
+
+            clearAndFill(formPage.childRegionStayField, childInfo.getChildRegionStay());
+            clearAndFill(formPage.childDistrictStayField, childInfo.getChildDistrictStay());
+            clearAndFill(formPage.childCityStayField, childInfo.getChildCityStay());
+            clearAndFill(formPage.childStreetStayField, childInfo.getChildStreetStay());
+            clearAndFill(formPage.childHouseStayField, childInfo.getChildHouseStay());
+            clearAndFill(formPage.childApartmentStayField, childInfo.getChildApartmentStay());
 
         } catch (Exception e) {
             e.printStackTrace();

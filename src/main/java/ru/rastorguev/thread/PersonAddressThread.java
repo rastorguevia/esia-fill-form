@@ -3,6 +3,7 @@ package ru.rastorguev.thread;
 import ru.rastorguev.info.PersonInfo;
 import ru.rastorguev.pages.FormPage;
 
+import static ru.rastorguev.util.Utils.clearAndFill;
 import static ru.rastorguev.util.Utils.utf8Charset;
 
 public class PersonAddressThread implements Runnable{
@@ -19,19 +20,19 @@ public class PersonAddressThread implements Runnable{
     public void run() {
         try {
 
-            formPage.regionField.sendKeys(utf8Charset(personInfo.getRegion()));
-            formPage.districtField.sendKeys(utf8Charset(personInfo.getDistrict()));
-            formPage.cityField.sendKeys(utf8Charset(personInfo.getCity()));
-            formPage.streetField.sendKeys(utf8Charset(personInfo.getStreet()));
-            formPage.houseField.sendKeys(utf8Charset(personInfo.getHouse()));
-            formPage.apartmentField.sendKeys(utf8Charset(personInfo.getApartment()));
+            clearAndFill(formPage.regionField, personInfo.getRegion());
+            clearAndFill(formPage.districtField, personInfo.getDistrict());
+            clearAndFill(formPage.cityField, personInfo.getCity());
+            clearAndFill(formPage.streetField, personInfo.getStreet());
+            clearAndFill(formPage.houseField, personInfo.getHouse());
+            clearAndFill(formPage.apartmentField, personInfo.getApartment());
 
-            formPage.regionStayField.sendKeys(utf8Charset(personInfo.getRegionStay()));
-            formPage.districtStayField.sendKeys(utf8Charset(personInfo.getDistrictStay()));
-            formPage.cityStayField.sendKeys(utf8Charset(personInfo.getCityStay()));
-            formPage.streetStayField.sendKeys(utf8Charset(personInfo.getStreetStay()));
-            formPage.houseStayField.sendKeys(utf8Charset(personInfo.getHouseStay()));
-            formPage.apartmentStayField.sendKeys(utf8Charset(personInfo.getApartmentStay()));
+            clearAndFill(formPage.regionStayField, personInfo.getRegionStay());
+            clearAndFill(formPage.districtStayField, personInfo.getDistrictStay());
+            clearAndFill(formPage.cityStayField, personInfo.getCityStay());
+            clearAndFill(formPage.streetStayField, personInfo.getStreetStay());
+            clearAndFill(formPage.houseStayField, personInfo.getHouseStay());
+            clearAndFill(formPage.apartmentStayField, personInfo.getApartmentStay());
 
         } catch (Exception e) {
             e.printStackTrace();
