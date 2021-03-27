@@ -23,6 +23,6 @@ choco install maven
 cd..
 mvn clean install
 
-//fill info.ini and then run app
+//fill info.ini and then run app, threadCount = 1(min)-4(max)
 java app.java
 ```
