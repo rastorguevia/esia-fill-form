@@ -59,21 +59,6 @@ public class Bootstrap {
         WebDriverWait wait = new WebDriverWait(webDriver, 60);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'container wrapper ccc ng-scope')]")));
 
-        //TODO выбор муниципалитета?
-        //TODO сделать выбор выпадающих списков
-
-
-//        WebElement selectElement =
-//                webDriver.findElement(By.id("ApplicantDocumentType"));
-
-
-//        Select select = new Select(selectElement);
-//        try {
-//            select.selectByVisibleText("PASSPORT");
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-
         ExecutorService es = Executors.newFixedThreadPool(systemInfo.getThreadCount());
         es.execute(new PersonDataThread(formPage, personInfo, systemInfo));
         es.execute(new PersonAddressThread(formPage, personInfo, systemInfo));
@@ -88,15 +73,6 @@ public class Bootstrap {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-
-
-
-
-
-
-
 
     }
 
