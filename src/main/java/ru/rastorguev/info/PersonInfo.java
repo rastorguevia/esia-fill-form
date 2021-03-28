@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PersonInfo {
 
+    @Cfg("municipality")
+    private String municipality;
+
     @Cfg("agreement")
     private String agreement;
     @Cfg("confirmOrder")
@@ -22,11 +25,14 @@ public class PersonInfo {
     private String patronymic;
     @Cfg("birthdate")
     private String birthdate;
-    //applicantType
-    //relationshipType
+    @Cfg("applicantType")
+    private String applicantType;
+    @Cfg("relationshipType")
+    private String relationshipType;
 
     //УДОСТОВЕРЕНИЕ ЛИЧНОСТИ
-    //docType
+    @Cfg("docType")
+    private String docType;
     @Cfg("docSeries")
     private String docSeries;
     @Cfg("docNumber")

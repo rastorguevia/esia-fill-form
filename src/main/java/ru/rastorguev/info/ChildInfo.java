@@ -31,7 +31,8 @@ public class ChildInfo {
     private String childBirthPlace;
 
     //СВЕДЕНИЯ О ДОКУМЕНТЕ, УДОСТОВЕРЯЮЩЕМ ЛИЧНОСТЬ
-    //docType
+    @Cfg("childDocType")
+    private String childDocType;
     @Cfg("childDocSeries")
     private String childDocSeries;
     @Cfg("childDocNumber")
@@ -70,5 +71,17 @@ public class ChildInfo {
     private String childHouseStay;
     @Cfg("childApartmentStay")
     private String childApartmentStay;
+
+    @Cfg("educationLanguage")
+    private String educationLanguage;
+    @Cfg("nativeLanguage")
+    private String nativeLanguage;
+    @Cfg("rebate")
+    private String rebate;
+
+    @Cfg("organization")
+    private String organization;
+    @Cfg("grade")
+    private String grade;
 
 }

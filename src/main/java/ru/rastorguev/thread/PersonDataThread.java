@@ -1,13 +1,15 @@
 package ru.rastorguev.thread;
 
+import org.openqa.selenium.support.ui.Select;
 import ru.rastorguev.info.PersonInfo;
 import ru.rastorguev.info.SystemInfo;
 import ru.rastorguev.pages.FormPage;
 
 import static ru.rastorguev.constant.Constant.ONE;
 import static ru.rastorguev.util.Utils.clearAndFill;
+import static ru.rastorguev.util.Utils.utf8Charset;
 
-public class PersonDataThread implements Runnable{
+public class PersonDataThread implements Runnable {
 
     private final FormPage formPage;
     private final PersonInfo personInfo;
@@ -27,10 +29,6 @@ public class PersonDataThread implements Runnable{
             clearAndFill(formPage.nameField, systemInfo.getClearSwitch(), personInfo.getName());
             clearAndFill(formPage.patronymicField, systemInfo.getClearSwitch(), personInfo.getPatronymic());
             clearAndFill(formPage.birthdateField, systemInfo.getClearSwitch(), personInfo.getBirthdate());
-            //applicantType
-            //relationshipType
-
-            //docType
             clearAndFill(formPage.docSeriesField, systemInfo.getClearSwitch(), personInfo.getDocSeries());
             clearAndFill(formPage.docNumberField, systemInfo.getClearSwitch(), personInfo.getDocNumber());
             clearAndFill(formPage.docIssuedByField, systemInfo.getClearSwitch(), personInfo.getDocIssuedBy());

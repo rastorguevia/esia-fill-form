@@ -12,13 +12,11 @@ import ru.rastorguev.info.ChildInfo;
 import ru.rastorguev.info.PersonInfo;
 import ru.rastorguev.info.SystemInfo;
 import ru.rastorguev.pages.FormPage;
-import ru.rastorguev.thread.ChildAddressThread;
-import ru.rastorguev.thread.ChildDataThread;
-import ru.rastorguev.thread.PersonAddressThread;
-import ru.rastorguev.thread.PersonDataThread;
+import ru.rastorguev.thread.*;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import static ru.rastorguev.constant.Constant.*;
 
@@ -67,6 +65,8 @@ public class Bootstrap {
 
 //        WebElement selectElement =
 //                webDriver.findElement(By.id("ApplicantDocumentType"));
+
+
 //        Select select = new Select(selectElement);
 //        try {
 //            select.selectByVisibleText("PASSPORT");
@@ -79,7 +79,24 @@ public class Bootstrap {
         es.execute(new PersonAddressThread(formPage, personInfo, systemInfo));
         es.execute(new ChildDataThread(formPage, childInfo, systemInfo));
         es.execute(new ChildAddressThread(formPage, childInfo, systemInfo));
+        es.execute(new DropDownListThread(formPage, personInfo, childInfo));
         es.shutdown();
+        es.awaitTermination(15, TimeUnit.SECONDS);
+
+        try {
+            formPage.captcha.click();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
+
+
+
+
+
+
 
     }
 

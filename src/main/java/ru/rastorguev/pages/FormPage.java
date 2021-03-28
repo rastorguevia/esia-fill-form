@@ -14,6 +14,13 @@ public class FormPage {
     public WebElement patronymicField;
     @FindBy(xpath = "//*[contains(@id, 'ApplBirthdate')]")
     public WebElement birthdateField;
+    @FindBy(xpath = "//*[contains(@id, 'applicantType')]")
+    public WebElement applicantType;
+    @FindBy(xpath = "//*[contains(@id, 'relType')]")
+    public WebElement relationshipType;
+
+    @FindBy(xpath = "//*[contains(@id, 'ApplicantDocumentType')]")
+    public WebElement docType;
     @FindBy(xpath = "//*[contains(@id, 'Series')]")
     public WebElement docSeriesField;
     @FindBy(xpath = "//*[contains(@id, 'Number')]")
@@ -70,6 +77,9 @@ public class FormPage {
     public WebElement childBirthdateField;
     @FindBy(xpath = "//*[contains(@id, 'childBirthPlace')]")
     public WebElement childBirthPlaceField;
+
+    @FindBy(xpath = "//*[contains(@id, 'ChildDocumentType')]")
+    public WebElement childDocType;
     @FindBy(xpath = "//*[contains(@id, 'ChildDocSeries')]")
     public WebElement childDocSeriesField;
     @FindBy(xpath = "//*[contains(@id, 'ChildDocNumber')]")
@@ -121,5 +131,26 @@ public class FormPage {
     public WebElement agreement;
     @FindBy(xpath = "//*[contains(@id, 'LicenseAggrement')]")
     public WebElement confirmOrder;
+
+    @FindBy(xpath = "//*[contains(@ng-model, 'choisedMu')]")
+    public WebElement municipality;
+    @FindBy(xpath = "//*[contains(@ng-click, 'submitChoise(choisedMu)')]")
+    public WebElement municipalityButton;
+
+    @FindBy(xpath = "//*[contains(@id, 'langs')]")
+    public WebElement educationLanguage;
+    @FindBy(xpath = "//*[contains(@id, 'leanlang')]")
+    public WebElement nativeLanguage;
+
+    @FindBy(xpath = "//*[contains(@id, 'Privilege')]")
+    public WebElement rebate;
+
+    @FindBy(xpath = "//*[contains(@id, 'school')]")
+    public WebElement organization;
+    @FindBy(xpath = "//*[contains(@id, 'schoolgroup')]")
+    public WebElement grade;
+
+    @FindBy(xpath = "//*[contains(@ng-model, 'userInput')]")
+    public WebElement captcha;
 
 }
