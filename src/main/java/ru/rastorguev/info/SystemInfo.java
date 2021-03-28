@@ -14,5 +14,7 @@ public class SystemInfo {
     private String website;
     @Cfg("threadCount")
     private int threadCount;
+    @Cfg("clearSwitch")
+    private String clearSwitch;
 
 }

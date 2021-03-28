@@ -1,45 +1,48 @@
 package ru.rastorguev.thread;
 
 import ru.rastorguev.info.PersonInfo;
+import ru.rastorguev.info.SystemInfo;
 import ru.rastorguev.pages.FormPage;
 
+import static ru.rastorguev.constant.Constant.ONE;
 import static ru.rastorguev.util.Utils.clearAndFill;
-import static ru.rastorguev.util.Utils.utf8Charset;
 
 public class PersonDataThread implements Runnable{
 
     private final FormPage formPage;
     private final PersonInfo personInfo;
+    private final SystemInfo systemInfo;
 
-    public PersonDataThread(FormPage page, PersonInfo info) {
+    public PersonDataThread(FormPage page, PersonInfo info, SystemInfo sys) {
         formPage = page;
         personInfo = info;
+        systemInfo = sys;
     }
 
     @Override
     public void run() {
         try {
 
-            clearAndFill(formPage.surnameField, personInfo.getSurname());
-            clearAndFill(formPage.nameField, personInfo.getName());
-            clearAndFill(formPage.patronymicField, personInfo.getPatronymic());
-            clearAndFill(formPage.birthdateField, personInfo.getBirthdate());
+            clearAndFill(formPage.surnameField, systemInfo.getClearSwitch(), personInfo.getSurname());
+            clearAndFill(formPage.nameField, systemInfo.getClearSwitch(), personInfo.getName());
+            clearAndFill(formPage.patronymicField, systemInfo.getClearSwitch(), personInfo.getPatronymic());
+            clearAndFill(formPage.birthdateField, systemInfo.getClearSwitch(), personInfo.getBirthdate());
             //applicantType
             //relationshipType
 
             //docType
-            clearAndFill(formPage.docSeriesField, personInfo.getDocSeries());
-            clearAndFill(formPage.docNumberField, personInfo.getDocNumber());
-            clearAndFill(formPage.docIssuedByField, personInfo.getDocIssuedBy());
-            clearAndFill(formPage.docIssuedDateField, personInfo.getDocIssuedDate());
-            clearAndFill(formPage.docValidUntilField, personInfo.getDocValidUntil());
-            clearAndFill(formPage.departmentCodeField, personInfo.getDepartmentCode());
+            clearAndFill(formPage.docSeriesField, systemInfo.getClearSwitch(), personInfo.getDocSeries());
+            clearAndFill(formPage.docNumberField, systemInfo.getClearSwitch(), personInfo.getDocNumber());
+            clearAndFill(formPage.docIssuedByField, systemInfo.getClearSwitch(), personInfo.getDocIssuedBy());
+            clearAndFill(formPage.docIssuedDateField, systemInfo.getClearSwitch(), personInfo.getDocIssuedDate());
+            clearAndFill(formPage.docValidUntilField, systemInfo.getClearSwitch(), personInfo.getDocValidUntil());
+            clearAndFill(formPage.departmentCodeField, systemInfo.getClearSwitch(), personInfo.getDepartmentCode());
 
-            clearAndFill(formPage.email, personInfo.getEmail());
-            clearAndFill(formPage.phone, personInfo.getPhone());
+            clearAndFill(formPage.email, systemInfo.getClearSwitch(), personInfo.getEmail());
+            clearAndFill(formPage.phone, systemInfo.getClearSwitch(), personInfo.getPhone());
 
-            if ("1".equals(personInfo.getAgreement())) formPage.agreement.click();
-            if ("1".equals(personInfo.getConfirmOrder())) formPage.confirmOrder.click();
+            if (ONE.equals(personInfo.getAgreement())) formPage.agreement.click();
+            if (ONE.equals(personInfo.getConfirmOrder())) formPage.confirmOrder.click();
 
         } catch (Exception e) {
             e.printStackTrace();

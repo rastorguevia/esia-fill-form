@@ -75,10 +75,10 @@ public class Bootstrap {
 //        }
 
         ExecutorService es = Executors.newFixedThreadPool(systemInfo.getThreadCount());
-        es.execute(new PersonDataThread(formPage, personInfo));
-        es.execute(new PersonAddressThread(formPage, personInfo));
-        es.execute(new ChildDataThread(formPage, childInfo));
-        es.execute(new ChildAddressThread(formPage, childInfo));
+        es.execute(new PersonDataThread(formPage, personInfo, systemInfo));
+        es.execute(new PersonAddressThread(formPage, personInfo, systemInfo));
+        es.execute(new ChildDataThread(formPage, childInfo, systemInfo));
+        es.execute(new ChildAddressThread(formPage, childInfo, systemInfo));
         es.shutdown();
 
     }
