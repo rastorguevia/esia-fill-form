@@ -1,13 +1,11 @@
 package ru.rastorguev.thread;
 
-import org.openqa.selenium.support.ui.Select;
 import ru.rastorguev.info.PersonInfo;
 import ru.rastorguev.info.SystemInfo;
 import ru.rastorguev.pages.FormPage;
 
 import static ru.rastorguev.constant.Constant.ONE;
 import static ru.rastorguev.util.Utils.clearAndFill;
-import static ru.rastorguev.util.Utils.utf8Charset;
 
 public class PersonDataThread implements Runnable {
 
@@ -23,27 +21,79 @@ public class PersonDataThread implements Runnable {
 
     @Override
     public void run() {
+
         try {
-
             clearAndFill(formPage.surnameField, systemInfo.getClearSwitch(), personInfo.getSurname());
-            clearAndFill(formPage.nameField, systemInfo.getClearSwitch(), personInfo.getName());
-            clearAndFill(formPage.patronymicField, systemInfo.getClearSwitch(), personInfo.getPatronymic());
-            clearAndFill(formPage.birthdateField, systemInfo.getClearSwitch(), personInfo.getBirthdate());
-            clearAndFill(formPage.docSeriesField, systemInfo.getClearSwitch(), personInfo.getDocSeries());
-            clearAndFill(formPage.docNumberField, systemInfo.getClearSwitch(), personInfo.getDocNumber());
-            clearAndFill(formPage.docIssuedByField, systemInfo.getClearSwitch(), personInfo.getDocIssuedBy());
-            clearAndFill(formPage.docIssuedDateField, systemInfo.getClearSwitch(), personInfo.getDocIssuedDate());
-            clearAndFill(formPage.docValidUntilField, systemInfo.getClearSwitch(), personInfo.getDocValidUntil());
-            clearAndFill(formPage.departmentCodeField, systemInfo.getClearSwitch(), personInfo.getDepartmentCode());
-
-            clearAndFill(formPage.email, systemInfo.getClearSwitch(), personInfo.getEmail());
-            clearAndFill(formPage.phone, systemInfo.getClearSwitch(), personInfo.getPhone());
-
-            if (ONE.equals(personInfo.getAgreement())) formPage.agreement.click();
-            if (ONE.equals(personInfo.getConfirmOrder())) formPage.confirmOrder.click();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
+        try {
+            clearAndFill(formPage.nameField, systemInfo.getClearSwitch(), personInfo.getName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            clearAndFill(formPage.patronymicField, systemInfo.getClearSwitch(), personInfo.getPatronymic());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            clearAndFill(formPage.birthdateField, systemInfo.getClearSwitch(), personInfo.getBirthdate());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            clearAndFill(formPage.docSeriesField, systemInfo.getClearSwitch(), personInfo.getDocSeries());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            clearAndFill(formPage.docNumberField, systemInfo.getClearSwitch(), personInfo.getDocNumber());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            clearAndFill(formPage.docIssuedByField, systemInfo.getClearSwitch(), personInfo.getDocIssuedBy());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            clearAndFill(formPage.docIssuedDateField, systemInfo.getClearSwitch(), personInfo.getDocIssuedDate());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            clearAndFill(formPage.docValidUntilField, systemInfo.getClearSwitch(), personInfo.getDocValidUntil());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            clearAndFill(formPage.departmentCodeField, systemInfo.getClearSwitch(), personInfo.getDepartmentCode());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            clearAndFill(formPage.email, systemInfo.getClearSwitch(), personInfo.getEmail());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            clearAndFill(formPage.phone, systemInfo.getClearSwitch(), personInfo.getPhone());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            if (ONE.equals(personInfo.getAgreement())) formPage.agreement.click();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            if (ONE.equals(personInfo.getConfirmOrder())) formPage.confirmOrder.click();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }

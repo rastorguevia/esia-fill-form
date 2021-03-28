@@ -22,26 +22,74 @@ public class ChildDataThread implements Runnable{
 
     @Override
     public void run() {
+
         try {
-
             clearAndFill(formPage.childSurnameField, systemInfo.getClearSwitch(), childInfo.getChildSurname());
-            clearAndFill(formPage.childNameField, systemInfo.getClearSwitch(), childInfo.getChildName());
-            clearAndFill(formPage.childPatronymicField, systemInfo.getClearSwitch(), childInfo.getChildPatronymic());
-            clearAndFill(formPage.childBirthdateField, systemInfo.getClearSwitch(), childInfo.getChildBirthdate());
-            clearAndFill(formPage.childBirthPlaceField, systemInfo.getClearSwitch(), childInfo.getChildBirthPlace());
-
-            clearAndFill(formPage.childDocSeriesField, systemInfo.getClearSwitch(), childInfo.getChildDocSeries());
-            clearAndFill(formPage.childDocNumberField, systemInfo.getClearSwitch(), childInfo.getChildDocNumber());
-            clearAndFill(formPage.childDocIssuedByField, systemInfo.getClearSwitch(), childInfo.getChildDocIssuedBy());
-            clearAndFill(formPage.childDocIssuedDateField, systemInfo.getClearSwitch(), childInfo.getChildDocIssuedDate());
-            clearAndFill(formPage.childActRecordNumberField, systemInfo.getClearSwitch(), childInfo.getChildActRecordNumber());
-
-            if (ONE.equals(childInfo.getChildSpecialConditions())) formPage.childSpecialConditions.click();
-            if (ONE.equals(childInfo.getChildAdaptedEducational())) formPage.childAdaptedEducational.click();
-            if (ONE.equals(childInfo.getChildPreferentialRightToStudy())) formPage.childPreferentialRightToStudy.click();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
+        try {
+            clearAndFill(formPage.childNameField, systemInfo.getClearSwitch(), childInfo.getChildName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            clearAndFill(formPage.childPatronymicField, systemInfo.getClearSwitch(), childInfo.getChildPatronymic());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            clearAndFill(formPage.childBirthdateField, systemInfo.getClearSwitch(), childInfo.getChildBirthdate());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            clearAndFill(formPage.childBirthPlaceField, systemInfo.getClearSwitch(), childInfo.getChildBirthPlace());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            clearAndFill(formPage.childDocSeriesField, systemInfo.getClearSwitch(), childInfo.getChildDocSeries());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            clearAndFill(formPage.childDocNumberField, systemInfo.getClearSwitch(), childInfo.getChildDocNumber());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            clearAndFill(formPage.childDocIssuedByField, systemInfo.getClearSwitch(), childInfo.getChildDocIssuedBy());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            clearAndFill(formPage.childDocIssuedDateField, systemInfo.getClearSwitch(), childInfo.getChildDocIssuedDate());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            clearAndFill(formPage.childActRecordNumberField, systemInfo.getClearSwitch(), childInfo.getChildActRecordNumber());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            if (ONE.equals(childInfo.getChildSpecialConditions())) formPage.childSpecialConditions.click();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            if (ONE.equals(childInfo.getChildAdaptedEducational())) formPage.childAdaptedEducational.click();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            if (ONE.equals(childInfo.getChildPreferentialRightToStudy())) formPage.childPreferentialRightToStudy.click();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }

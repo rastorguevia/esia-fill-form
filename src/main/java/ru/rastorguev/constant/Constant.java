@@ -6,4 +6,5 @@ public class Constant {
     public static final String FILE_NAME = "info.ini";
     public static final String START_MAXIMIZED = "start-maximized";
     public static final String ONE = "1";
+
 }
