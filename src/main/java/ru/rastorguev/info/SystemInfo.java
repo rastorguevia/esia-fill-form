@@ -16,5 +16,11 @@ public class SystemInfo {
     private int threadCount;
     @Cfg("clearSwitch")
     private String clearSwitch;
+    @Cfg("timeOutInSeconds")
+    private int timeOutInSeconds;
+    @Cfg("timeOutInSecondsMun")
+    private int timeOutInSecondsMun;
+    @Cfg("testMod")
+    private String testMod;
 
 }

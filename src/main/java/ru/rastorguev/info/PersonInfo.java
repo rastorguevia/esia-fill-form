@@ -8,6 +8,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PersonInfo {
 
+    @Cfg("login")
+    private String login;
+    @Cfg("pass")
+    private String pass;
+
     @Cfg("municipality")
     private String municipality;
 

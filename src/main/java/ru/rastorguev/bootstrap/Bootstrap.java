@@ -60,6 +60,60 @@ public class Bootstrap {
 
     //последовательное заполнение
     private void processPageInOrder() throws InterruptedException {
+        System.out.println("ВРЕМЕНЕМ ОЖИДАНИЯ БЛОКА МУНИЦИПАЛИТЕТА ВЫБРАНО: " + systemInfo.getTimeOutInSecondsMun());
+        System.out.println("ВРЕМЕНЕМ ОЖИДАНИЯ БЛОКОВ ВЫБРАНО: " + systemInfo.getTimeOutInSeconds());
+
+        if (!ONE.equals(systemInfo.getTestMod())) {
+            try {
+                //ожидание появления первой кнопки
+                WebDriverWait waitFirst = new WebDriverWait(webDriver, systemInfo.getTimeOutInSeconds());
+                waitFirst.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'center-block col-md-4')]")));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            //первая кнопка войти
+            try {
+                formPage.firstButton.click();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
+                //ожидание появления формы авторизации
+                WebDriverWait waitAuth = new WebDriverWait(webDriver, systemInfo.getTimeOutInSeconds());
+                waitAuth.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'data-form flt-lbl-form')]")));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
+                webDriver.findElement(By.id("login")).clear();
+                webDriver.findElement(By.id("login")).sendKeys(utf8Charset(personInfo.getLogin()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                clearAndFill(formPage.passwordField, systemInfo.getClearSwitch(), personInfo.getPass());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                formPage.authButton.click();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        try {
+            System.out.println("ОЖИДАНИЕ МУНИЦИПАЛИТЕТА");
+            WebDriverWait waitMunicipality = new WebDriverWait(webDriver, systemInfo.getTimeOutInSecondsMun());
+            waitMunicipality.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'form-group form-inline')]")));
+            System.out.println("ОЖИДАНИЕ МУНИЦИПАЛИТЕТА ЗАКОНЧЕНО");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
         //выбор муниципалитета
         try {
             Select select = new Select(formPage.municipality);
@@ -74,10 +128,13 @@ public class Bootstrap {
             e.printStackTrace();
         }
 
-        //ожидание появления одной большой формы "Данные заявителя"
-        WebDriverWait wait = new WebDriverWait(webDriver, 60);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'col-sm-12')]")));
-
+        try {
+            //ожидание появления одной большой формы "Данные заявителя"
+            WebDriverWait wait = new WebDriverWait(webDriver, systemInfo.getTimeOutInSeconds());
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'col-sm-12')]")));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         //заявитель и удостоверение личности
         try {
             clearAndFill(formPage.surnameField, systemInfo.getClearSwitch(), personInfo.getSurname());
@@ -215,9 +272,12 @@ public class Bootstrap {
             e.printStackTrace();
         }
 
-        //Thread.sleep(10000);
-        WebDriverWait wait1 = new WebDriverWait(webDriver, 60);
-        wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'col-sm-12')]")));
+        try {
+            WebDriverWait wait1 = new WebDriverWait(webDriver, systemInfo.getTimeOutInSeconds());
+            wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'col-sm-12')]")));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         try {
             clearAndFill(formPage.childSurnameField, systemInfo.getClearSwitch(), childInfo.getChildSurname());
@@ -278,9 +338,12 @@ public class Bootstrap {
             e.printStackTrace();
         }
 
-
-        WebDriverWait wait2 = new WebDriverWait(webDriver, 60);
-        wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'col-sm-12')]")));
+        try {
+            WebDriverWait wait2 = new WebDriverWait(webDriver, systemInfo.getTimeOutInSeconds());
+            wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'col-sm-12')]")));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         try {
             if (ONE.equals(childInfo.getChildAddressMatch())) formPage.childAddressMatch.click();
@@ -288,10 +351,12 @@ public class Bootstrap {
             e.printStackTrace();
         }
 
-
-        WebDriverWait wait3 = new WebDriverWait(webDriver, 60);
-        wait3.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'col-sm-12')]")));
-
+        try {
+            WebDriverWait wait3 = new WebDriverWait(webDriver, systemInfo.getTimeOutInSeconds());
+            wait3.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'col-sm-12')]")));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         try {
             clearAndFill(formPage.childRegionField, systemInfo.getClearSwitch(), childInfo.getChildRegion());
@@ -355,10 +420,12 @@ public class Bootstrap {
             e.printStackTrace();
         }
 
-
-        WebDriverWait wait4 = new WebDriverWait(webDriver, 60);
-        wait4.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'col-sm-12')]")));
-
+        try {
+            WebDriverWait wait4 = new WebDriverWait(webDriver, systemInfo.getTimeOutInSeconds());
+            wait4.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'col-sm-12')]")));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         try {
             clearAndFill(formPage.email, systemInfo.getClearSwitch(), personInfo.getEmail());
@@ -371,9 +438,12 @@ public class Bootstrap {
             e.printStackTrace();
         }
 
-
-        WebDriverWait wait5 = new WebDriverWait(webDriver, 60);
-        wait5.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'col-sm-12')]")));
+        try {
+            WebDriverWait wait5 = new WebDriverWait(webDriver, systemInfo.getTimeOutInSeconds());
+            wait5.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'col-sm-12')]")));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         try {
             Select select = new Select(formPage.educationLanguage);
@@ -412,8 +482,12 @@ public class Bootstrap {
             e.printStackTrace();
         }
 
-        WebDriverWait wait6 = new WebDriverWait(webDriver, 60);
-        wait6.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'col-sm-12')]")));
+        try {
+            WebDriverWait wait6 = new WebDriverWait(webDriver, systemInfo.getTimeOutInSeconds());
+            wait6.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'col-sm-12')]")));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         try {
             Select select = new Select(formPage.organization);
@@ -429,10 +503,12 @@ public class Bootstrap {
             e.printStackTrace();
         }
 
-
-        WebDriverWait wait7 = new WebDriverWait(webDriver, 60);
-        wait7.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'col-sm-6 col-sm-offset-3')]")));
-
+        try {
+            WebDriverWait wait7 = new WebDriverWait(webDriver, systemInfo.getTimeOutInSeconds());
+            wait7.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'col-sm-6 col-sm-offset-3')]")));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         try {
             if (ONE.equals(personInfo.getAgreement())) formPage.agreement.click();

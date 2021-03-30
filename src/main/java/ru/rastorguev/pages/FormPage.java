@@ -5,6 +5,16 @@ import org.openqa.selenium.support.FindBy;
 
 public class FormPage {
 
+    //authorization
+    @FindBy(xpath = "//*[contains(@class, 'btn-base small')]")
+    public WebElement firstButton;
+    @FindBy(xpath = "//*[contains(@id, 'login')]")
+    public WebElement loginField;
+    @FindBy(xpath = "//*[contains(@id, 'password')]")
+    public WebElement passwordField;
+    @FindBy(xpath = "//*[contains(@id, 'loginByPwdButton')]")
+    public WebElement authButton;
+
     //person
     @FindBy(xpath = "//*[contains(@id, 'LastName')]")
     public WebElement surnameField;
